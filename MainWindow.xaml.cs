@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace OOP_Planning_App
 {
@@ -319,6 +320,11 @@ namespace OOP_Planning_App
                     listBox.SelectedItems.Add(rectangleViewModel);
                 }
             }
+        }
+
+        private void Add_Class(object sender, RoutedEventArgs e)
+        {
+            ViewModel.AddClassBox(Convert.ToDouble(250), Convert.ToDouble(250), Convert.ToDouble(50), Convert.ToDouble(40), Colors.Crimson);
         }
     }
 }

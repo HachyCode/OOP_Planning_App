@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Media;
 using System.Windows;
-
+using System;
 
 namespace OOP_Planning_App
 {
@@ -156,6 +156,11 @@ namespace OOP_Planning_App
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        internal void AddRectangle(int v1, int v2, int v3, int v4, object blue)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

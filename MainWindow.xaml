@@ -23,8 +23,10 @@
         <DataTemplate 
             DataType="{x:Type local:RectangleViewModel}"
             >
-            <Grid>
+            <Grid x:Name="MainGrid">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -74,17 +76,17 @@
                     <ComboBoxItem Content="~"></ComboBoxItem>
                 </ComboBox>
 
-                <TextBox Grid.Row="0" Grid.Column="2" MinWidth="100" Background="#957dad" x:Name="ClassNames">Class </TextBox>
-                <TextBox Grid.Row="1" Grid.Column="2" MinWidth="100" Background="#e0bbe4" x:Name="ClassParameters">Parameters </TextBox>
-                <TextBox Grid.Row="2" Grid.Column="2" MinWidth="100" Background="#fec8d8" x:Name="ClassMethods">Methods </TextBox>
+                <TextBox Grid.Row="0" Grid.Column="2" MinWidth="100" Background="#957dad" x:Name="ClassNames">Class</TextBox>
+                <TextBox Grid.Row="1" Grid.Column="2" MinWidth="100" Background="#e0bbe4" x:Name="ClassParameters">Parameters</TextBox>
+                <TextBox Grid.Row="2" Grid.Column="2" MinWidth="100" Background="#fec8d8" x:Name="ClassMethods">Methods</TextBox>
 
                 <Label Grid.Row="0" Grid.Column="3" Background="#ddd" Name="ValueC" Content=" : "/>
                 <Label Grid.Row="1" Grid.Column="3" Background="#ddd" Name="ValueP" Content=" = "/>
                 <Label Grid.Row="2" Grid.Column="3" Background="#ddd" Name="ValueM" Content=" ( "/>
 
-                <TextBox Grid.Row="0" Grid.Column="4" MinWidth="100" Background="#957dad" x:Name="ClassInheritance">  </TextBox>
-                <TextBox Grid.Row="1" Grid.Column="4" MinWidth="100" Background="#e0bbe4" x:Name="ParametersValue">  </TextBox>
-                <TextBox Grid.Row="2" Grid.Column="4" MinWidth="100" Background="#fec8d8" x:Name="MethodsVariblles">  </TextBox>
+                <TextBox Grid.Row="0" Grid.Column="4" MinWidth="100" Background="#957dad" x:Name="ClassInheritance"></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="4" MinWidth="100" Background="#e0bbe4" x:Name="ParametersValue"></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="4" MinWidth="100" Background="#fec8d8" x:Name="MethodsVariblles"></TextBox>
 
                 <Label Grid.Row="0" Grid.Column="5" Background="#ddd" Name="AccessC" Content=" , "/>
                 <Label Grid.Row="1" Grid.Column="5" Background="#ddd" Name="AccessP" Content=" , "/>
@@ -126,7 +128,7 @@
                     <ComboBoxItem Content="long"></ComboBoxItem>
                     <ComboBoxItem Content="short"></ComboBoxItem>
                 </ComboBox>
-                
+                <Button Grid.Row="4" Grid.ColumnSpan="7" Background="#00AAFF" Content="Add_Class" Click="Add_Class"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
