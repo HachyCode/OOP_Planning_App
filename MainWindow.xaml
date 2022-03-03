@@ -25,35 +25,108 @@
             >
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Rectangle
-                    Width="{Binding Width}"
-                    Height="{Binding Height}"
+                    Width="20"
                     Fill="{Binding Color, Converter={StaticResource colorToBrushConverter}}"
                     Cursor="Hand"
                     MouseDown="Rectangle_MouseDown"
                     MouseUp="Rectangle_MouseUp"
                     MouseMove="Rectangle_MouseMove"
+                    Grid.RowSpan="4" Grid.Column="0"
                 />
 
-                <TextBox Grid.Row="1" Grid.Column="2" Background="#957dad" x:Name="ClassNames">Class</TextBox>
-                <TextBox Grid.Row="2" Grid.Column="2" Background="#e0bbe4" x:Name="ClassParameters">+ Parameters :</TextBox>
-                <TextBox Grid.Row="3" Grid.Column="2" Background="#fec8d8" x:Name="ClassMethods">Methods() :</TextBox>
+                <ComboBox Grid.Row="0" Grid.Column="1" Background="#957dad" Name="TypeNames" SelectedIndex="0">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="+"></ComboBoxItem>
+                    <ComboBoxItem Content="-"></ComboBoxItem>
+                    <ComboBoxItem Content="#"></ComboBoxItem>
+                    <ComboBoxItem Content="~"></ComboBoxItem>
+                </ComboBox>
 
+                <ComboBox Grid.Row="1" Grid.Column="1" Background="#e0bbe4" Name="TypeParameters">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="+"></ComboBoxItem>
+                    <ComboBoxItem Content="-"></ComboBoxItem>
+                    <ComboBoxItem Content="#"></ComboBoxItem>
+                    <ComboBoxItem Content="~"></ComboBoxItem>
+                </ComboBox>
+
+                <ComboBox Grid.Row="2" Grid.Column="1" Background="#fec8d8" Name="TypeMethods">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="+"></ComboBoxItem>
+                    <ComboBoxItem Content="-"></ComboBoxItem>
+                    <ComboBoxItem Content="#"></ComboBoxItem>
+                    <ComboBoxItem Content="~"></ComboBoxItem>
+                </ComboBox>
+
+                <TextBox Grid.Row="0" Grid.Column="2" MinWidth="100" Background="#957dad" x:Name="ClassNames">Class </TextBox>
+                <TextBox Grid.Row="1" Grid.Column="2" MinWidth="100" Background="#e0bbe4" x:Name="ClassParameters">Parameters </TextBox>
+                <TextBox Grid.Row="2" Grid.Column="2" MinWidth="100" Background="#fec8d8" x:Name="ClassMethods">Methods </TextBox>
+
+                <Label Grid.Row="0" Grid.Column="3" Background="#ddd" Name="ValueC" Content=" : "/>
+                <Label Grid.Row="1" Grid.Column="3" Background="#ddd" Name="ValueP" Content=" = "/>
+                <Label Grid.Row="2" Grid.Column="3" Background="#ddd" Name="ValueM" Content=" ( "/>
+
+                <TextBox Grid.Row="0" Grid.Column="4" MinWidth="100" Background="#957dad" x:Name="ClassInheritance">  </TextBox>
+                <TextBox Grid.Row="1" Grid.Column="4" MinWidth="100" Background="#e0bbe4" x:Name="ParametersValue">  </TextBox>
+                <TextBox Grid.Row="2" Grid.Column="4" MinWidth="100" Background="#fec8d8" x:Name="MethodsVariblles">  </TextBox>
+
+                <Label Grid.Row="0" Grid.Column="5" Background="#ddd" Name="AccessC" Content=" , "/>
+                <Label Grid.Row="1" Grid.Column="5" Background="#ddd" Name="AccessP" Content=" , "/>
+                <Label Grid.Row="2" Grid.Column="5" Background="#ddd" Name="AccessM" Content=" ) , "/>
+
+                <ComboBox Grid.Row="0" Grid.Column="6" Background="#957dad" Name="AccessNames" SelectedIndex="0">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;final&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;sealed&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;enum&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;interface&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;partial&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;static&gt;&gt;"></ComboBoxItem>
+                </ComboBox>
+
+                <ComboBox Grid.Row="1" Grid.Column="6" Background="#e0bbe4" x:Name="AccessParameters" SelectedIndex="0">
+                    <ComboBoxItem Content="int"></ComboBoxItem>
+                    <ComboBoxItem Content="string"></ComboBoxItem>
+                    <ComboBoxItem Content="bool"></ComboBoxItem>
+                    <ComboBoxItem Content="decimal"></ComboBoxItem>
+                    <ComboBoxItem Content="float"></ComboBoxItem>
+                    <ComboBoxItem Content="double"></ComboBoxItem>
+                    <ComboBoxItem Content="byte"></ComboBoxItem>
+                    <ComboBoxItem Content="char"></ComboBoxItem>
+                    <ComboBoxItem Content="long"></ComboBoxItem>
+                    <ComboBoxItem Content="short"></ComboBoxItem>
+                </ComboBox>
+
+                <ComboBox Grid.Row="2" Grid.Column="6" Background="#fec8d8" Name="AccessMethods" SelectedIndex="0">
+                    <ComboBoxItem Content="void"></ComboBoxItem>
+                    <ComboBoxItem Content="int"></ComboBoxItem>
+                    <ComboBoxItem Content="string"></ComboBoxItem>
+                    <ComboBoxItem Content="bool"></ComboBoxItem>
+                    <ComboBoxItem Content="decimal"></ComboBoxItem>
+                    <ComboBoxItem Content="float"></ComboBoxItem>
+                    <ComboBoxItem Content="double"></ComboBoxItem>
+                    <ComboBoxItem Content="byte"></ComboBoxItem>
+                    <ComboBoxItem Content="char"></ComboBoxItem>
+                    <ComboBoxItem Content="long"></ComboBoxItem>
+                    <ComboBoxItem Content="short"></ComboBoxItem>
+                </ComboBox>
+                
             </Grid>
         </DataTemplate>
     </Window.Resources>
