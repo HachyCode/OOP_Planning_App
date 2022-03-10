@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Media;
 using System.Windows;
-
+using System;
 
 namespace OOP_Planning_App
 {
@@ -21,14 +21,17 @@ namespace OOP_Planning_App
 
         private Point connectorHotspot;
 
+        public double index { get; set; }
+
         #endregion Data Members
-        public RectangleViewModel(double x, double y, double width, double height, Color color)
+        public RectangleViewModel(double x, double y, double width, double height, Color color, double index)
         {
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
             this.color = color;
+            this.index = index;
         }
 
         public double X
@@ -126,6 +129,25 @@ namespace OOP_Planning_App
             }
         }
 
+        public double Index
+        {
+            get
+            {
+                return index;
+            }
+            set
+            {
+                if (index == value)
+                {
+                    return;
+                }
+
+                index = value;
+
+                OnPropertyChanged("Index");
+            }
+        }
+
         public Point ConnectorHotspot
         {
             get
@@ -156,6 +178,11 @@ namespace OOP_Planning_App
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        internal void AddRectangle(int v1, int v2, int v3, int v4, object blue, double index)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

@@ -7,17 +7,16 @@ namespace OOP_Planning_App
     internal class ViewModel : INotifyPropertyChanged
     {
         #region Data Members
-        private ObservableCollection<RectangleViewModel> rectangles = new ObservableCollection<RectangleViewModel>();
+        public ObservableCollection<RectangleViewModel> rectangles = new ObservableCollection<RectangleViewModel>();
         #endregion Data Members
 
         public ViewModel()
         {
-            var r1 = new RectangleViewModel(10, 10, 50, 40, Colors.Blue);
-            rectangles.Add(r1);
-            var r2 = new RectangleViewModel(70, 60, 50, 60, Colors.Green);
-            rectangles.Add(r2);
-            var r3 = new RectangleViewModel(150, 130, 55, 48, Colors.Purple);
-            rectangles.Add(r3);
+            AddClassBox(10, 10, 50, 40, Colors.DarkBlue, MainWindow.rectangelIndex);
+            MainWindow.rectangelIndex++;
+            AddClassBox(70, 60, 50, 60, Colors.DarkBlue, MainWindow.rectangelIndex);
+            MainWindow.rectangelIndex++;
+            AddClassBox(150, 130, 55, 48, Colors.DarkBlue, MainWindow.rectangelIndex);
         }
 
         public ObservableCollection<RectangleViewModel> Rectangles
@@ -27,7 +26,17 @@ namespace OOP_Planning_App
                 return rectangles;
             }
         }
-        
+
+        public void AddClassBox(double x, double y, double width, double height, Color color, int index)
+        {
+            rectangles.Add(new RectangleViewModel(x, y, width, height, color, index));
+        }
+
+        public void DeletClassBox(int value)
+        {
+            rectangles.Remove(rectangles[value]);
+        }
+
         #region INotifyPropertyChanged Members
 
         private void OnPropertyChanged(string name)

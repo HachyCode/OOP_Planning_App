@@ -23,37 +23,118 @@
         <DataTemplate 
             DataType="{x:Type local:RectangleViewModel}"
             >
-            <Grid>
+            <Grid x:Name="MainGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Rectangle
-                    Width="{Binding Width}"
-                    Height="{Binding Height}"
-                    Fill="{Binding Color, Converter={StaticResource colorToBrushConverter}}"
-                    Cursor="Hand"
+                    Width="20"
+                    Fill="#5c6898"
+                    Cursor=""
                     MouseDown="Rectangle_MouseDown"
                     MouseUp="Rectangle_MouseUp"
                     MouseMove="Rectangle_MouseMove"
+                    Grid.RowSpan="4" Grid.Column="0"
                 />
+                <TextBlock Text= "{Binding index}"/>
 
-                <TextBox Grid.Row="1" Grid.Column="2" Background="#957dad" x:Name="ClassNames">Class</TextBox>
-                <TextBox Grid.Row="2" Grid.Column="2" Background="#e0bbe4" x:Name="ClassParameters">+ Parameters :</TextBox>
-                <TextBox Grid.Row="3" Grid.Column="2" Background="#fec8d8" x:Name="ClassMethods">Methods() :</TextBox>
+                <ComboBox Grid.Row="0" Grid.Column="1" Background="#fdb3ca" Name="TypeNames" SelectedIndex="0">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="+"></ComboBoxItem>
+                    <ComboBoxItem Content="-"></ComboBoxItem>
+                    <ComboBoxItem Content="#"></ComboBoxItem>
+                    <ComboBoxItem Content="~"></ComboBoxItem>
+                </ComboBox>
 
+                <ComboBox Grid.Row="1" Grid.Column="1" Background="#a9dfe2" Name="TypeParameters">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="+"></ComboBoxItem>
+                    <ComboBoxItem Content="-"></ComboBoxItem>
+                    <ComboBoxItem Content="#"></ComboBoxItem>
+                    <ComboBoxItem Content="~"></ComboBoxItem>
+                </ComboBox>
+
+                <ComboBox Grid.Row="2" Grid.Column="1" Background="#d1d5fa" Name="TypeMethods">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="+"></ComboBoxItem>
+                    <ComboBoxItem Content="-"></ComboBoxItem>
+                    <ComboBoxItem Content="#"></ComboBoxItem>
+                    <ComboBoxItem Content="~"></ComboBoxItem>
+                </ComboBox>
+
+                <TextBox Grid.Row="0" Grid.Column="2" MinWidth="100" Background="#fdb3ca" x:Name="ClassNames" Cursor="IBeam" >Class</TextBox>
+                <TextBox Grid.Row="1" Grid.Column="2" MinWidth="100" Background="#a9dfe2" x:Name="ClassParameters" Cursor="IBeam" >Parameters</TextBox>
+                <TextBox Grid.Row="2" Grid.Column="2" MinWidth="100" Background="#d1d5fa" x:Name="ClassMethods" Cursor="IBeam" >Methods</TextBox>
+
+                <Label Grid.Row="0" Grid.Column="3" Background="#ddd" Name="ValueC" Content=" : "/>
+                <Label Grid.Row="1" Grid.Column="3" Background="#ddd" Name="ValueP" Content=" = "/>
+                <Label Grid.Row="2" Grid.Column="3" Background="#ddd" Name="ValueM" Content=" ( "/>
+
+                <TextBox Grid.Row="0" Grid.Column="4" MinWidth="100" Background="#fdb3ca" x:Name="ClassInheritance" Cursor="IBeam" ></TextBox>
+                <TextBox Grid.Row="1" Grid.Column="4" MinWidth="100" Background="#a9dfe2" x:Name="ParametersValue" Cursor="IBeam" ></TextBox>
+                <TextBox Grid.Row="2" Grid.Column="4" MinWidth="100" Background="#d1d5fa" x:Name="MethodsVariblles" Cursor="IBeam" ></TextBox>
+
+                <Label Grid.Row="0" Grid.Column="5" Background="#ddd" Name="AccessC" Content=" , "/>
+                <Label Grid.Row="1" Grid.Column="5" Background="#ddd" Name="AccessP" Content=" , "/>
+                <Label Grid.Row="2" Grid.Column="5" Background="#ddd" Name="AccessM" Content=" ) , "/>
+
+                <ComboBox Grid.Row="0" Grid.Column="6" Background="#fdb3ca" Name="AccessNames" SelectedIndex="0">
+                    <ComboBoxItem Content=" "></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;final&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;sealed&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;enum&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;interface&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;partial&gt;&gt;"></ComboBoxItem>
+                    <ComboBoxItem Content="&lt;&lt;static&gt;&gt;"></ComboBoxItem>
+                </ComboBox>
+
+                <ComboBox Grid.Row="1" Grid.Column="6" Background="#a9dfe2" x:Name="AccessParameters" SelectedIndex="0">
+                    <ComboBoxItem Content="int"></ComboBoxItem>
+                    <ComboBoxItem Content="string"></ComboBoxItem>
+                    <ComboBoxItem Content="bool"></ComboBoxItem>
+                    <ComboBoxItem Content="decimal"></ComboBoxItem>
+                    <ComboBoxItem Content="float"></ComboBoxItem>
+                    <ComboBoxItem Content="double"></ComboBoxItem>
+                    <ComboBoxItem Content="byte"></ComboBoxItem>
+                    <ComboBoxItem Content="char"></ComboBoxItem>
+                    <ComboBoxItem Content="long"></ComboBoxItem>
+                    <ComboBoxItem Content="short"></ComboBoxItem>
+                </ComboBox>
+
+                <ComboBox Grid.Row="2" Grid.Column="6" Background="#d1d5fa" Name="AccessMethods" SelectedIndex="0">
+                    <ComboBoxItem Content="void"></ComboBoxItem>
+                    <ComboBoxItem Content="int"></ComboBoxItem>
+                    <ComboBoxItem Content="string"></ComboBoxItem>
+                    <ComboBoxItem Content="bool"></ComboBoxItem>
+                    <ComboBoxItem Content="decimal"></ComboBoxItem>
+                    <ComboBoxItem Content="float"></ComboBoxItem>
+                    <ComboBoxItem Content="double"></ComboBoxItem>
+                    <ComboBoxItem Content="byte"></ComboBoxItem>
+                    <ComboBoxItem Content="char"></ComboBoxItem>
+                    <ComboBoxItem Content="long"></ComboBoxItem>
+                    <ComboBoxItem Content="short"></ComboBoxItem>
+                </ComboBox>
+                
+                <Button Grid.Row="0" Grid.Column="8" Background="#5c6898" Content=" X " Click="Button_Delet_Class_Box"/>
+                <Button Grid.Row="1" Grid.Column="7" Background="#5c6898" Content=" + " Click="Button_Add_Parameter"/>
+                <Button Grid.Row="2" Grid.Column="7" Background="#5c6898" Content=" + " Click="Add_Class"/>
+
+                <Label Grid.Row="4" Grid.ColumnSpan="8" Background="#ddd" Name="Value" Content=""/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
@@ -102,6 +183,7 @@
                 Opacity="0.5"
                 />
         </Canvas>
+        <Button Height="auto" Width="auto" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#5c6898" Content="Add_Class" Click="Add_Class"/>
     </Grid>
 
 </Window>
