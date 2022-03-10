@@ -28,6 +28,8 @@ namespace OOP_Planning_App
 
         #endregion Data Members
 
+        static public int rectangelIndex = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -173,9 +175,6 @@ namespace OOP_Planning_App
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                //
-                //  Clear selection immediately when starting drag selection.
-                //
                 listBox.SelectedItems.Clear();
 
                 isLeftMouseButtonDownOnWindow = true;
@@ -195,10 +194,6 @@ namespace OOP_Planning_App
 
                 if (isDraggingSelectionRect)
                 {
-                    //
-                    // Drag selection has ended, apply the 'selection rectangle'.
-                    //
-
                     isDraggingSelectionRect = false;
                     ApplyDragSelectionRect();
 
@@ -216,9 +211,6 @@ namespace OOP_Planning_App
 
                 if (!wasDragSelectionApplied)
                 {
-                    //
-                    // A click and release in empty space clears the selection.
-                    //
                     listBox.SelectedItems.Clear();
                 }
             }
@@ -228,9 +220,6 @@ namespace OOP_Planning_App
         {
             if (isDraggingSelectionRect)
             {
-                //
-                // Drag selection is in progress.
-                //
                 Point curMouseDownPoint = e.GetPosition(this);
                 UpdateDragSelectionRect(origMouseDownPoint, curMouseDownPoint);
 
@@ -238,19 +227,12 @@ namespace OOP_Planning_App
             }
             else if (isLeftMouseButtonDownOnWindow)
             {
-                //
-                // The user is left-dragging the mouse,
-                // but don't initiate drag selection until
-                // they have dragged past the threshold value.
-                //
                 Point curMouseDownPoint = e.GetPosition(this);
                 var dragDelta = curMouseDownPoint - origMouseDownPoint;
                 double dragDistance = Math.Abs(dragDelta.Length);
                 if (dragDistance > DragThreshold)
                 {
-                    //
-                    // When the mouse has been dragged more than the threshold value commence drag selection.
-                    //
+ 
                     isDraggingSelectionRect = true;
                     InitDragSelectionRect(origMouseDownPoint, curMouseDownPoint);
                 }
@@ -324,7 +306,24 @@ namespace OOP_Planning_App
 
         private void Add_Class(object sender, RoutedEventArgs e)
         {
-            ViewModel.AddClassBox(Convert.ToDouble(250), Convert.ToDouble(250), Convert.ToDouble(50), Convert.ToDouble(40), Colors.Crimson);
+            ViewModel.AddClassBox(Convert.ToDouble(250), Convert.ToDouble(250), Convert.ToDouble(50), Convert.ToDouble(40), Colors.Crimson, rectangelIndex);
+            rectangelIndex++;
+        }
+
+        private void Button_Delet_Class_Box(object sender, RoutedEventArgs e)
+        {
+            //ViewModel.rectangles.Remove(ViewModel.rectangles[rectangelIndex]);
+            listBox.SelectedItems.Clear();
+        }
+
+        private void Button_Add_Parameter(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Add_Method(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
