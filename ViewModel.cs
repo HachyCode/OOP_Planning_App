@@ -17,6 +17,7 @@ namespace OOP_Planning_App
             AddClassBox(70, 60, 50, 60, Colors.DarkBlue, MainWindow.rectangelIndex);
             MainWindow.rectangelIndex++;
             AddClassBox(150, 130, 55, 48, Colors.DarkBlue, MainWindow.rectangelIndex);
+            MainWindow.rectangelIndex++;
         }
 
         public ObservableCollection<RectangleViewModel> Rectangles
