@@ -312,8 +312,10 @@ namespace OOP_Planning_App
 
         private void Button_Delet_Class_Box(object sender, RoutedEventArgs e)
         {
-            //ViewModel.rectangles.Remove(ViewModel.rectangles[rectangelIndex]);
-            listBox.SelectedItems.Clear();
+            //RectangleViewModel itype = sender as RectangleViewModel;
+            int inttype = Convert.ToInt32(((OOP_Planning_App.RectangleViewModel)((System.Windows.FrameworkElement)sender).DataContext).Index);
+            ViewModel.rectangles.Remove(ViewModel.rectangles[inttype]);
+            //listBox.SelectedItems.Clear();
         }
 
         private void Button_Add_Parameter(object sender, RoutedEventArgs e)
