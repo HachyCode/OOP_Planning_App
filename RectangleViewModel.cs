@@ -2,6 +2,7 @@
 using System.Windows.Media;
 using System.Windows;
 using System;
+using System.Collections.Generic;
 
 namespace OOP_Planning_App
 {
@@ -23,6 +24,8 @@ namespace OOP_Planning_App
 
         public double index { get; set; }
 
+        public List<string> paremeters = new List<string>();
+
         #endregion Data Members
         public RectangleViewModel(double x, double y, double width, double height, Color color, double index)
         {
@@ -32,6 +35,10 @@ namespace OOP_Planning_App
             this.height = height;
             this.color = color;
             this.index = index;
+
+            paremeters.Add("parameter 1");
+            paremeters.Add("parameter 2");
+            paremeters.Add("parameter 3");
         }
 
         public double X
