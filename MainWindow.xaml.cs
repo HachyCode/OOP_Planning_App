@@ -33,8 +33,6 @@ namespace OOP_Planning_App
         public MainWindow()
         {
             InitializeComponent();
-
-            
         }
 
         private ViewModel ViewModel
@@ -326,7 +324,7 @@ namespace OOP_Planning_App
 
             stack.Children.Add(lab);
             stack.SetValue(Grid.RowProperty, 2);
-            stack.SetValue(Grid.ColumnProperty, 0);
+            stack.SetValue(Grid.ColumnProperty, 2);
 
             ((Grid) ((Button) sender).Parent).Children.Add(stack);
         }

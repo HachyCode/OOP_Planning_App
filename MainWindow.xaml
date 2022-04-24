@@ -18,12 +18,13 @@
         <local:ColorToBrushConverter x:Key="colorToBrushConverter" />
 
         <DataTemplate DataType="{x:Type local:RectangleViewModel}">
-            <Grid x:Name="MainGrid" >
+            <Grid x:Name="MainGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" SharedSizeGroup="A" />
                     <RowDefinition Height="auto" SharedSizeGroup="B" />
                     <RowDefinition Height="auto" SharedSizeGroup="C" />
                     <RowDefinition Height="auto" SharedSizeGroup="D" />
+                    <RowDefinition Height="auto" SharedSizeGroup="E" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -75,7 +76,7 @@
 
                 <ComboBox
                     Name="TypeMethods"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="1"
                     Background="#d1d5fa">
                     <ComboBoxItem Content=" " />
@@ -105,7 +106,7 @@
                 </TextBox>
                 <TextBox
                     x:Name="ClassMethods"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="2"
                     MinWidth="100"
                     Background="#d1d5fa"
@@ -127,7 +128,7 @@
                     Content=" = " />
                 <Label
                     Name="ValueM"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="3"
                     Background="#ddd"
                     Content=" ( " />
@@ -139,6 +140,27 @@
                     MinWidth="100"
                     Background="#fdb3ca"
                     Cursor="IBeam" />
+
+
+                <ListBox Name="ParametersList">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Title}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
                 <TextBox
                     x:Name="ParametersValue"
                     Grid.Row="1"
@@ -148,7 +170,7 @@
                     Cursor="IBeam" />
                 <TextBox
                     x:Name="MethodsVariblles"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="4"
                     MinWidth="100"
                     Background="#d1d5fa"
@@ -168,7 +190,7 @@
                     Content=" , " />
                 <Label
                     Name="AccessM"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="5"
                     Background="#ddd"
                     Content=" ) , " />
@@ -208,7 +230,7 @@
 
                 <ComboBox
                     Name="AccessMethods"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="6"
                     Background="#d1d5fa"
                     SelectedIndex="0">
@@ -238,7 +260,7 @@
                     Click="Button_Add_Parameter"
                     Content=" + " />
                 <Button
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="7"
                     Background="#5c6898"
                     Click="Button_Add_Method"
