@@ -306,21 +306,27 @@ namespace OOP_Planning_App
 
         private void Add_Class(object sender, RoutedEventArgs e)
         {
-            ViewModel.AddClassBox(Convert.ToDouble(250), Convert.ToDouble(250), Convert.ToDouble(50), Convert.ToDouble(40), Colors.Crimson, rectangelIndex);
+            ViewModel.AddClassBox(250.0, Convert.ToDouble(250), Convert.ToDouble(50), Convert.ToDouble(40), Colors.Crimson, rectangelIndex);
             rectangelIndex++;
         }
 
         private void Button_Delet_Class_Box(object sender, RoutedEventArgs e)
         {
-            //RectangleViewModel itype = sender as RectangleViewModel;
             int inttype = Convert.ToInt32(((OOP_Planning_App.RectangleViewModel)((System.Windows.FrameworkElement)sender).DataContext).Index);
             ViewModel.rectangles.Remove(ViewModel.rectangles[inttype]);
-            //listBox.SelectedItems.Clear();
         }
 
         private void Button_Add_Parameter(object sender, RoutedEventArgs e)
         {
+            StackPanel stack = new StackPanel();
+            Label lab = new Label();
+            lab.Content = "New Par";
 
+            stack.Children.Add(lab);
+            stack.SetValue(Grid.RowProperty, 2);
+            stack.SetValue(Grid.ColumnProperty, 2);
+
+            ((Grid) ((Button) sender).Parent).Children.Add(stack);
         }
 
         private void Button_Add_Method(object sender, RoutedEventArgs e)
